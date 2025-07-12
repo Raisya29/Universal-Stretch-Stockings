@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Stretch Stockings - Stoking Elastis Nyaman untuk Aktivitas Sehari-hari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        softPink: '#ffb3ba',
+                        lavender: '#e6e6fa',
+                        mintPastel: '#b3ffb3',
+                        peach: '#ffdab9',
+                        pureWhite: '#ffffff',
+                        accentBlue: '#55c4cf'
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Inter', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'gradient-hero': 'linear-gradient(135deg, rgba(255,179,186,0.85) 0%, rgba(230,230,250,0.85) 50%, rgba(179,255,179,0.85) 100%)',
+                        'gradient-form': 'linear-gradient(135deg, rgba(230,230,250,0.9) 0%, rgba(255,179,186,0.9) 100%)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        .hero {
+            background: url('https://cdn.webfastcdn.com/image/49747866ed5199bc83d5ca561e1f922f26cb5620.jpeg') center/cover no-repeat;
+            background-attachment: fixed;
+            position: relative;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(255,179,186,0.85) 0%, rgba(230,230,250,0.85) 50%, rgba(179,255,179,0.85) 100%);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        
+        .zoom-effect {
+            transition: transform 0.5s;
+        }
+        
+        .zoom-effect:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+        
+        .promo-card {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .promo-card:hover {
+            border-color: #ffb3ba;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .price-card {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease;
+        }
+        
+        .price-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .highlighted-card {
+            transform: scale(1.05);
+            border: 2px solid #ffb3ba;
+        }
+        
+        .price-card.highlighted-card:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+        
+        .sticky-cta {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 179, 186, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(255, 179, 186, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 179, 186, 0); }
+        }
+        
+        .notification-popup {
+            animation: slideIn 0.5s forwards, fadeOut 0.5s 4.5s forwards;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+        .glass-form {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+        
+        .pulse-button {
+            animation: pulseButton 2s infinite;
+        }
+        
+        @keyframes pulseButton {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 179, 186, 0.7); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); box-shadow: 0 0 0 12px rgba(255, 179, 186, 0); }
+        }
+        
+        .floating {
+            animation-name: floating;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* OrderOnline Form Styling Overrides */
+        .ooef .orderonline-embed-form {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+        
+        .ooef input, .ooef select, .ooef textarea {
+            background: rgba(255, 255, 255, 0.8) !important;
+            border: 1px solid #e6e6fa !important;
+            border-radius: 12px !important;
+            padding: 14px 16px !important;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 16px !important;
+            margin-bottom: 16px !important;
+            transition: all 0.3s !important;
+        }
+        
+        .ooef input:focus, .ooef select:focus, .ooef textarea:focus {
+            outline: none !important;
+            border-color: #ffb3ba !important;
+            box-shadow: 0 0 0 3px rgba(255, 179, 186, 0.3) !important;
+        }
+        
+        .ooef button[type="submit"] {
+            background: linear-gradient(135deg, #ffb3ba, #e6e6fa) !important;
+            border: none !important;
+            border-radius: 12px !important;
+            padding: 16px 24px !important;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 18px !important;
+            color: #333 !important;
+            cursor: pointer !important;
+            transition: all 0.3s !important;
+            width: 100% !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            margin-top: 20px !important;
+        }
+        
+        .ooef button[type="submit"]:hover {
+            background: linear-gradient(135deg, #ffa3ac, #d6d6f0) !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        .ooef .form-label {
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 500 !important;
+            margin-bottom: 8px !important;
+            color: #333 !important;
+            display: block !important;
+        }
+        
+        .ooef .form-group {
+            margin-bottom: 20px !important;
+        }
+    </style>
+</head>
+<body class="bg-white font-body text-gray-800">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-white bg-opacity-90 backdrop-blur-sm z-50 shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-softPink flex items-center justify-center mr-3">
+                    <i class="fas fa-socks text-white text-xl"></i>
+                </div>
+                <h1 class="font-heading text-2xl font-bold bg-gradient-to-r from-softPink via-lavender to-mintPastel bg-clip-text text-transparent">Bestbrand Shop</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#features" class="font-medium hover:text-softPink transition">Fitur</a>
+                <a href="#gallery" class="font-medium hover:text-softPink transition">Galeri</a>
+                <a href="#testimonials" class="font-medium hover:text-softPink transition">Testimoni</a>
+                <a href="#pricing" class="font-medium hover:text-softPink transition">Harga</a>
+                <a href="#order" class="font-medium hover:text-softPink transition">Pesan</a>
+            </nav>
+            
+            <div class="flex items-center">
+                <button class="md:hidden text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <a href="#order" class="hidden md:block bg-gradient-to-r from-softPink to-lavender text-white font-bold py-2 px-6 rounded-full hover:shadow-lg transition duration-300 ml-6">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero min-h-screen flex items-center relative pt-20">
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <div class="container mx-auto px-4 py-24 relative z-10">
+            <div class="max-w-2xl">
+                <div class="inline-block bg-white bg-opacity-80 px-4 py-2 rounded-full mb-6">
+                    <span class="text-softPink font-bold">Produk Terbaru</span>
+                </div>
+                
+                <h1 class="font-heading text-5xl md:text-7xl font-bold text-white leading-tight mb-5">
+                    Stoking Elastis Nyaman untuk Aktivitas Sehari-hari
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-white opacity-90 mb-8 max-w-2xl">
+                    Universal Stretch Stockings membantu melancarkan sirkulasi darah dan menjaga kaki tetap ringan meski beraktivitas lama. Desain pas di kaki, tidak mudah melorot, dan tetap stylish.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 mb-10">
+                    <div class="flex items-center bg-white bg-opacity-80 rounded-full px-4 py-2">
+                        <i class="fas fa-truck text-softPink mr-2"></i>
+                        <span class="font-medium">Gratis Ongkir</span>
+                    </div>
+                    <div class="flex items-center bg-white bg-opacity-80 rounded-full px-4 py-2">
+                        <i class="fas fa-sync-alt text-softPink mr-2"></i>
+                        <span class="font-medium">Garansi 7 Hari</span>
+                    </div>
+                    <div class="flex items-center bg-white bg-opacity-80 rounded-full px-4 py-2">
+                        <i class="fas fa-shield-alt text-softPink mr-2"></i>
+                        <span class="font-medium">100% Original</span>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap items-center gap-5">
+                    <a href="#order" class="bg-gradient-to-r from-softPink to-lavender text-white text-xl font-bold py-4 px-10 rounded-full hover:shadow-xl transition duration-300 transform hover:-translate-y-1 inline-flex items-center pulse-button">
+                        <i class="fas fa-shopping-cart mr-3"></i>BELI SEKARANG
+                    </a>
+                    
+                    <div class="inline-flex items-center">
+                        <div class="flex mr-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <span class="font-bold text-white">4.9/5 (1.280+ Ulasan)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Preview -->
+        <div class="absolute bottom-10 right-10 hidden lg:block floating">
+            <div class="relative">
+                <div class="bg-gradient-to-r from-softPink to-lavender w-80 h-80 rounded-2xl transform rotate-6"></div>
+                <img src="https://cdn.webfastcdn.com/image/49747866ed5199bc83d5ca561e1f922f26cb5620.jpeg" alt="Universal Stretch Stockings" class="absolute top-0 left-0 w-80 h-80 object-cover rounded-2xl shadow-xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-lavender bg-opacity-30">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 text-center">
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="text-4xl font-bold text-softPink mb-2" id="customerCount">10.000+</div>
+                    <div class="text-gray-600">Pelanggan</div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="text-4xl font-bold text-softPink mb-2">4</div>
+                    <div class="text-gray-600">Varian Warna</div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="text-4xl font-bold text-softPink mb-2">100%</div>
+                    <div class="text-gray-600">Kepuasan</div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="text-4xl font-bold text-softPink mb-2">24</div>
+                    <div class="text-gray-600">Jam Pengiriman</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6">Kenapa Memilih Universal Stretch Stockings?</h2>
+                <p class="text-xl text-gray-600">Stoking revolusioner yang menggabungkan kenyamanan, kesehatan, dan gaya dalam satu produk</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-xl transition-all duration-300">
+                    <div class="w-16 h-16 rounded-full bg-softPink flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Sirkulasi Darah Lebih Baik</h3>
+                    <p class="text-gray-600 mb-4">Desain kompresi ringan membantu melancarkan peredaran darah kaki, mengurangi bengkak dan rasa lelah setelah aktivitas panjang.</p>
+                </div>
+                
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-xl transition-all duration-300">
+                    <div class="w-16 h-16 rounded-full bg-lavender flex items-center justify-center mb-6">
+                        <i class="fas fa-wind text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Bahan Bernapas & Nyaman</h3>
+                    <p class="text-gray-600 mb-4">Dibuat dengan bahan stretch berkualitas tinggi yang ringan dan bernapas, menjaga kaki tetap sejuk dan kering sepanjang hari.</p>
+                </div>
+                
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-xl transition-all duration-300">
+                    <div class="w-16 h-16 rounded-full bg-mintPastel flex items-center justify-center mb-6">
+                        <i class="fas fa-ruler-combined text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Desain Universal</h3>
+                    <p class="text-gray-600 mb-4">Cocok untuk wanita tinggi 148-190cm dan lingkar pinggang 80-100cm. Panjang 65cm sebelum dipakai, pas di kaki tanpa melorot.</p>
+                </div>
+                
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-xl transition-all duration-300">
+                    <div class="w-16 h-16 rounded-full bg-peach flex items-center justify-center mb-6">
+                        <i class="fas fa-star text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Gaya Modern</h3>
+                    <p class="text-gray-600 mb-4">Tersedia dalam 4 pilihan warna trendi (Khaki, Black, Gray, Coffe) yang cocok untuk berbagai gaya berpakaian.</p>
+                </div>
+                
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-xl transition-all duration-300">
+                    <div class="w-16 h-16 rounded-full bg-softPink flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Tahan Lama</h3>
+                    <p class="text-gray-600 mb-4">Dibuat dengan teknik knitting khusus yang kuat namun tetap lembut, tahan lama meski sering dicuci.</p>
+                </div>
+                
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-xl transition-all duration-300">
+                    <div class="w-16 h-16 rounded-full bg-lavender flex items-center justify-center mb-6">
+                        <i class="fas fa-user-check text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Untuk Semua Usia</h3>
+                    <p class="text-gray-600 mb-4">Didesain untuk wanita usia 21-60 tahun, cocok untuk kebutuhan medis maupun gaya hidup aktif sehari-hari.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-lavender bg-opacity-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6">Galeri Produk</h2>
+                <p class="text-xl text-gray-600">Temukan gaya sempurna untuk penampilan Anda</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="zoom-effect overflow-hidden rounded-2xl">
+                    <img src="https://cdn.webfastcdn.com/image/2022/03/b5d3ab74bc04e8032ff659722e604e96658a156824d6f3018bff0b949ef9945a-600.gif" alt="Stoking Universal" class="w-full h-full object-cover">
+                </div>
+                <div class="zoom-effect overflow-hidden rounded-2xl">
+                    <img src="https://cdn.webfastcdn.com/image/2022/03/af2dfe093e53c14496583bc23d8908af24e6564292168031d7c31a547c039aab-600.jpeg" alt="Stoking Universal" class="w-full h-full object-cover">
+                </div>
+                <div class="zoom-effect overflow-hidden rounded-2xl">
+                    <img src="https://cdn.webfastcdn.com/image/2022/03/a65f29be487d9fe7982f1de2cbe9eecb8c8db9c1174ada36ae0dae1046e2ec22-600.jpeg" alt="Stoking Universal" class="w-full h-full object-cover">
+                </div>
+                <div class="zoom-effect overflow-hidden rounded-2xl">
+                    <img src="https://cdn.webfastcdn.com/image/2022/11/aff50aa53f19b1dcf89a498a15600a2da2ad3f13da0b771dbed7594c7a8a5b1e-600.jpeg" alt="Stoking Universal" class="w-full h-full object-cover">
+                </div>
+                <div class="zoom-effect overflow-hidden rounded-2xl">
+                    <img src="https://cdn.webfastcdn.com/image/2022/11/d37859b2c12c84e3900daccdfafef6a06cb585fe7c957e48898030f567681e4d-600.jpeg" alt="Stoking Universal" class="w-full h-full object-cover">
+                </div>
+                <div class="zoom-effect overflow-hidden rounded-2xl">
+                    <img src="https://cdn.webfastcdn.com/image/2022/11/7dc5624c71bcfb56054d82885a65db246ad65f24774b8ce8cd6db6407d38404d-600.jpeg" alt="Stoking Universal" class="w-full h-full object-cover">
+                </div>
+                <div class="zoom-effect overflow-hidden rounded-2xl">
+                    <img src="https://cdn.webfastcdn.com/image/2022/03/6876d34985e71c00c4e28270b04ff07babba911a739e25fa5c3dbebe2530e5ed-600.jpeg" alt="Stoking Universal" class="w-full h-full object-cover">
+                </div>
+                <div class="zoom-effect overflow-hidden rounded-2xl">
+                    <img src="https://cdn.webfastcdn.com/image/2022/03/9ce6eefb68155a946fc14d102f55f1d276a300a9934cf2b200764d27a488ef05-600.jpeg" alt="Stoking Universal" class="w-full h-full object-cover">
+                </div>
+                <div class="zoom-effect overflow-hidden rounded-2xl">
+                    <img src="https://ae01.alicdn.com/kf/Sf3db49ab36d64a0389b3eb80531b5111d.jpg?width=800&height=800&hash=1600" alt="Stoking Universal" class="w-full h-full object-cover">
+                </div>
+            </div>
+            
+            <!-- Video Demo -->
+            <div class="mt-16 max-w-4xl mx-auto">
+                <div class="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden shadow-xl">
+                    <video controls poster="https://cdn.webfastcdn.com/image/2022/03/b5d3ab74bc04e8032ff659722e604e96658a156824d6f3018bff0b949ef9945a-600.gif" class="w-full">
+                        <source src="https://down-tx-sg.vod.susercontent.com/api/v4/11110105/mms/id-11110105-6ke1k-lzu8yaxxxp2841.16000081725610129.mp4" type="video/mp4">
+                        Browser Anda tidak mendukung tag video.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6">Apa Kata Pelanggan Kami?</h2>
+                <p class="text-xl text-gray-600">Ribuan wanita Indonesia sudah mencoba dan merasakan manfaatnya</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card rounded-2xl p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.pinimg.com/736x/3c/60/20/3c602068d78cf054daa2e86747edde71.jpg" alt="Naftali" class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-bold">Naftali</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Pengiriman cepat, penjual sangat amanah. Udah langganan di toko ini!"</p>
+                    <div class="border rounded-lg p-2">
+                        <img src="https://down-id.img.susercontent.com/file/id-11134103-7r98o-lxckvoqdw77x5e.webp" alt="Testimonial" class="rounded-lg">
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card rounded-2xl p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.pinimg.com/736x/80/df/d2/80dfd25482fa299828a19eefb9b39782.jpg" alt="Sursuryani" class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-bold">Sursuryani</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Stocking nya nyaman banget, ngga gampang sobek. Menurut ku worth to buy sih."</p>
+                    <div class="border rounded-lg p-2">
+                        <img src="https://down-id.img.susercontent.com/file/id-11134103-7rbk8-m7b3ygi47ns01d.webp" alt="Testimonial" class="rounded-lg">
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card rounded-2xl p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.pinimg.com/736x/20/e8/90/20e8908b47b72f92d9161126b853459a.jpg" alt="Ze Rahma" class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-bold">Ze Rahma</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Bagus sesuai dengan pesanan, pengiriman aman, pengemasan aman. Terimakasih!"</p>
+                    <div class="border rounded-lg p-2">
+                        <img src="https://down-id.img.susercontent.com/file/id-11134103-7rbkb-mal4x0h9v76me0.webp" alt="Testimonial" class="rounded-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gradient-to-b from-lavender via-softPink/20 to-peach/20">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6">Pilih Paket Terbaik Anda</h2>
+                <p class="text-xl text-gray-600">Dapatkan harga spesial dengan promo terbatas</p>
+                
+                <!-- Countdown Timer -->
+                <div class="mt-10 inline-flex bg-white bg-opacity-80 py-4 px-8 rounded-full">
+                    <span class="font-bold text-xl mr-2">Promo berakhir dalam:</span>
+                    <div id="countdown" class="flex space-x-2">
+                        <div class="bg-softPink text-white font-bold text-xl px-3 py-1 rounded-lg">02</div>
+                        <span class="font-bold text-xl">:</span>
+                        <div class="bg-softPink text-white font-bold text-xl px-3 py-1 rounded-lg">18</div>
+                        <span class="font-bold text-xl">:</span>
+                        <div class="bg-softPink text-white font-bold text-xl px-3 py-1 rounded-lg">45</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-8">
+                <!-- Single Package -->
+                <div class="price-card bg-white rounded-2xl p-8 w-full max-w-sm flex flex-col">
+                    <div class="text-center mb-6">
+                        <h3 class="font-heading text-2xl font-bold mb-2">1 PCS</h3>
+                        <p class="text-gray-600">Coba dulu satu, rasakan kenyamanannya</p>
+                    </div>
+                    
+                    <div class="flex justify-center items-baseline my-4">
+                        <span class="text-3xl font-bold text-softPink">Rp 145.000</span>
+                        <span class="text-lg text-gray-500 line-through ml-3">Rp 187.000</span>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-mintPastel mr-2"></i>
+                            <span>1 Stoking Universal Premium</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-mintPastel mr-2"></i>
+                            <span>Varian warna pilihan</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-mintPastel mr-2"></i>
+                            <span>Garansi kualitas 30 hari</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#order" class="mt-auto bg-gradient-to-r from-lavender to-mintPastel text-white font-bold py-3 rounded-full text-center transition hover:shadow-lg">
+                        Pilih Paket Ini
+                    </a>
+                </div>
+                
+                <!-- Bundle Package -->
+                <div class="price-card highlighted-card bg-white rounded-2xl p-8 w-full max-w-sm flex flex-col relative">
+                    <div class="absolute top-0 right-0 bg-softPink text-white font-bold py-1 px-4 rounded-bl-lg rounded-tr-2xl">
+                        POPULER
+                    </div>
+                    
+                    <div class="text-center mb-6">
+                        <h3 class="font-heading text-2xl font-bold mb-2">3 PCS + GRATIS 1</h3>
+                        <p class="text-gray-600">Lebih hemat untuk stok jangka panjang</p>
+                    </div>
+                    
+                    <div class="flex justify-center items-baseline my-4">
+                        <span class="text-3xl font-bold text-softPink">Rp 245.000</span>
+                        <span class="text-lg text-gray-500 line-through ml-3">Rp 475.000</span>
+                    </div>
+                    
+                    <div class="bg-mintPastel bg-opacity-30 rounded-lg py-2 px-4 mb-4">
+                        <p class="font-bold text-center">HEMAT Rp 230.000</p>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-mintPastel mr-2"></i>
+                            <span>4 Stoking Universal Premium</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-mintPastel mr-2"></i>
+                            <span>Pilih 4 varian warna berbeda</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-mintPastel mr-2"></i>
+                            <span>Gratis pouch eksklusif</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-mintPastel mr-2"></i>
+                            <span>Garansi kualitas 60 hari</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-mintPastel mr-2"></i>
+                            <span>Free ongkir ke seluruh Indonesia</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#order" class="mt-auto bg-gradient-to-r from-softPink to-lavender text-white font-bold py-3 rounded-full text-center transition hover:shadow-lg">
+                        Pilih Paket Hemat
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-white rounded-2xl p-8 max-w-3xl mx-auto">
+                <h3 class="font-heading text-2xl font-bold mb-4 text-center">Spesifikasi Produk</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold mb-2">Ukuran Universal:</h4>
+                        <ul class="space-y-2">
+                            <li class="flex"><i class="fas fa-ruler mr-3 text-softPink mt-1"></i> <span>Ideal untuk tinggi 148-190 cm</span></li>
+                            <li class="flex"><i class="fas fa-arrows-alt-h mr-3 text-softPink mt-1"></i> <span>Lingkar pinggang 80-100 cm</span></li>
+                            <li class="flex"><i class="fas fa-long-arrow-alt-down mr-3 text-softPink mt-1"></i> <span>Panjang stoking: 65 cm (sebelum dipakai)</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2">Varian Warna:</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full bg-[#b7a99a] mr-2"></div>
+                                <span>Khaki</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full bg-black mr-2"></div>
+                                <span>Black</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full bg-gray-500 mr-2"></div>
+                                <span>Gray</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full bg-[#6f4e37] mr-2"></div>
+                                <span>Coffe</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="order" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="glass-form rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                    <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-softPink bg-opacity-30 blur-3xl"></div>
+                    <div class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-lavender bg-opacity-30 blur-3xl"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="text-center mb-10">
+                            <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Pesan Sekarang</h2>
+                            <p class="text-lg text-gray-600">Isi data Anda di bawah ini dan kami akan segera memproses pesanan Anda</p>
+                        </div>
+                        
+                        <!-- OrderOnline Embed Form -->
+                        <div class="ooef">
+                            <form class="orderonline-embed-form" data-username="vera" data-product-slug="universal-stretch-stockings-promt" data-product-id="6872a15cb2ce428816035e5a" id="oo-embed-form-universal-stretch-stockings-promt-3880" data-origin="orderonline">
+                                <div class="ooef-loader"><style>.ooef-loader{visibility: hidden;opacity: 0;position: absolute;left: 0;right: 0;top: 0;bottom: 0;display: flex;justify-content: center;align-items: center;flex-direction: column;animation: ooLoadingIn 10s ease;-webkit-animation: ooLoadingIn 10s ease;animation-fill-mode: forwards;overflow: hidden}@keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}@-webkit-keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}.ooef-loader>div,.ooef-loader>div:after{border-radius: 50%;width: 2.5rem;height: 2.5rem}.ooef-loader>div{font-size: 10px;position: relative;text-indent: -9999em;border: .25rem solid #f5f5f5;border-left: .25rem solid #55c4cf;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation: ooLoading 1.1s infinite linear;animation: ooLoading 1.1s infinite linear}.ooef-loader.error>div{border-left: .25rem solid #ff4500;animation-duration: 5s}@-webkit-keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}@keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}</style><div aria-live="polite" role="status"><div>Loading...</div></div></div>
+                            </form>
+                        </div>
+                        <script>
+                            if (typeof xLogError != 'function') {
+                                var xLogError = function (error) {
+                                    var req = new XMLHttpRequest();
+                                    var payload = JSON.stringify({
+                                        url: document.location.href,
+                                        line: error.line,
+                                        stack: error.stack
+                                    });
+                                    var params = 'message=' + encodeURIComponent(error.name) + '&payload=' + encodeURIComponent(payload) + '&type=embed&level=error';
+                                    req.open('POST', 'https://api.orderonline.id/log', true);
+                                    req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                                    req.send(params);
+                                };
+                            }
+                            try {
+                                if (typeof xEmbedScript != 'function') {
+                                    var xEmbedScript = function () {
+                                        !function(w, d, e, v, id, t, s) {
+                                            if (d.getElementById(id)) return;
+                                            t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                                            s = d.getElementsByTagName(e)[0];
+                                            s.parentNode.insertBefore(t, s);
+                                        }(window, document, 'script', 'https://cdn.orderonline.id/js/embed-v2-slim.min.js?v=8.0.4', 'oo-embed-js');
+                                    };
+                                }
+                                if (typeof xEmbedInit != 'function') {
+                                    var xEmbedInit = function (w, n) {
+                                        if (w.ooe) return;
+                                        n = w.ooe = function() {
+                                            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                                        };
+                                        if (!w._ooe) w._ooe = n;
+                                        n.push = n;n.loaded = !0;n.version = '8.0.4';n.queue = [];
+                                    };
+                                }
+                                xEmbedInit(window);
+                                ooe('setup', 'redirect', 'https://vera.orderonline.id');
+                                ooe('init', '5f1a7807a9bf807d6c63d963', '6872a15cb2ce428816035e5a', '6872a15cb2ce428816035e5b', 'oo-embed-form-universal-stretch-stockings-promt-3880', {"mode":"page","action":"Klik untuk pemesanan","title":"Form Pemesanan","triggerPixel":true,"triggerGtm":true});
+                                if (!window.jQuery) {
+                                    !function(w, d, e, v, id, t, s) {
+                                        if (d.getElementById(id)) return;
+                                        t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                                        t.addEventListener('load', xEmbedScript);
+                                        s = d.getElementsByTagName(e)[0];
+                                        s.parentNode.insertBefore(t, s);
+                                    }(window, document, 'script', 'https://cdn.orderonline.id/js/vendor/jquery.min.js', 'oo-embed-jquery');
+                                } else {
+                                    xEmbedScript();
+                                }
+                            } catch (e) {
+                                xLogError(e);
+                                throw e;
+                            }
+                        </script>
+                        <!-- End OrderOnline Embed Form -->
+                        
+                       
+                </div>
+                
+                <!-- Security Badges -->
+                <div class="flex flex-wrap justify-center gap-6 mt-12">
+                    <div class="flex items-center">
+                        <i class="fas fa-lock text-2xl text-softPink mr-2"></i>
+                        <span>Pembayaran Aman</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-shield-alt text-2xl text-softPink mr-2"></i>
+                        <span>Data Dijamin Privasi</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-box-open text-2xl text-softPink mr-2"></i>
+                        <span>Garansi Kepuasan</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-truck text-2xl text-softPink mr-2"></i>
+                        <span>Pengiriman Cepat</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-lavender bg-opacity-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6">Pertanyaan Umum</h2>
+                <p class="text-xl text-gray-600">Temukan jawaban atas pertanyaan yang sering diajukan</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="bg-white rounded-2xl p-6">
+                    <h3 class="font-bold text-lg flex items-center">
+                        <i class="fas fa-question-circle text-softPink mr-3"></i>
+                        Apakah stoking ini cocok untuk saya yang tinggi 160cm?
+                    </h3>
+                    <p class="mt-2 text-gray-600 pl-8">
+                        Sangat cocok! Universal Stretch Stockings didesain untuk wanita dengan tinggi 148-190cm dan lingkar pinggang 80-100cm. Panjang stoking 65cm sebelum dipakai akan pas di kaki Anda.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6">
+                    <h3 class="font-bold text-lg flex items-center">
+                        <i class="fas fa-question-circle text-softPink mr-3"></i>
+                        Bagaimana cara perawatan stoking ini?
+                    </h3>
+                    <p class="mt-2 text-gray-600 pl-8">
+                        Untuk menjaga kualitas, cuci stoking dengan tangan menggunakan air dingin dan sabun lembut. Jangan memakai mesin cuci atau pengering. Jemur di tempat teduh dengan cara digantung atau diletakkan datar.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-2-xl p-6">
+                    <h3 class="font-bold text-lg flex items-center">
+                        <i class="fas fa-question-circle text-softPink mr-3"></i>
+                        Berapa lama pengiriman pesanan?
+                    </h3>
+                    <p class="mt-2 text-gray-600 pl-8">
+                        Kami mengirim pesanan dalam 24 jam setelah pembayaran diterima. Untuk wilayah Jabodetabek, pengiriman 1-2 hari kerja. Luar Jabodetabek 2-5 hari kerja tergantung lokasi.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6">
+                    <h3 class="font-bold text-lg flex items-center">
+                        <i class="fas fa-question-circle text-softPink mr-3"></i>
+                        Apakah ada garansi untuk produk ini?
+                    </h3>
+                    <p class="mt-2 text-gray-600 pl-8">
+                        Ya, kami memberikan garansi kepuasan 7 hari. Jika Anda tidak puas dengan produk, Anda bisa mengembalikan dalam kondisi belum dipakai dan mendapatkan pengembalian dana penuh.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-softPink to-lavender text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center mr-3">
+                            <i class="fas fa-socks text-softPink text-xl"></i>
+                        </div>
+                        <h2 class="font-heading text-2xl font-bold">Universal Stretch Stockings</h2>
+                    </div>
+                    <p class="mt-2 opacity-80 max-w-xs">Stoking revolusioner untuk kenyamanan kaki sepanjang hari</p>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="font-bold text-lg mb-2">Bestbrand Shop</p>
+                    <p class="opacity-80">Jl. Fashion No. 123, Jakarta Selatan</p>
+                    <p class="opacity-80">CS: +62 8953 8406 0107 (09.00-17.00 WIB)</p>
+                    <div class="flex justify-center md:justify-end space-x-4 mt-4">
+                        <a href="#" class="text-white text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white text-xl"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white text-xl"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="text-white text-xl"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white border-opacity-30 mt-8 pt-8 text-center text-sm opacity-75">
+                <p>&copy; 2025 Universal Stretch Stockings. Hak cipta dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky CTA Button -->
+    <a href="#order" class="fixed bottom-6 right-6 bg-gradient-to-r from-softPink to-lavender text-white font-bold py-3 px-6 rounded-full shadow-lg z-50 flex items-center sticky-cta">
+        <i class="fas fa-shopping-cart mr-2"></i> BELI SEKARANG
+    </a>
+
+    <!-- Notification Popup -->
+    <div id="notification" class="hidden fixed bottom-6 left-6 bg-white rounded-xl shadow-2xl p-4 max-w-xs z-50 notification-popup">
+        <div class="flex">
+            <div class="flex-shrink-0 mr-4">
+                <img id="notificationImg" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" class="w-12 h-12 rounded-full object-cover">
+            </div>
+            <div>
+                <p class="font-bold" id="notificationText">Vina dari Jakarta baru saja memesan Universal Stretch Stockings</p>
+                <p class="text-xs text-gray-500 mt-1" id="notificationTime">Baru saja</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Counter Animation
+        let customerCounter = document.getElementById('customerCount');
+        let count = 10000;
+        setInterval(() => {
+            count += Math.floor(Math.random() * 5);
+            customerCounter.textContent = count.toLocaleString('id-ID') + '+';
+        }, 3000);
+        
+        // Countdown Timer
+        let countdownElement = document.getElementById('countdown');
+        let hours = 2;
+        let minutes = 18;
+        let seconds = 45;
+        
+        setInterval(() => {
+            seconds--;
+            if (seconds < 0) {
+                minutes--;
+                seconds = 59;
+            }
+            if (minutes < 0) {
+                hours--;
+                minutes = 59;
+            }
+            if (hours < 0) {
+                hours = 2;
+                minutes = 18;
+                seconds = 45;
+            }
+            
+            countdownElement.innerHTML = `
+                <div class="bg-softPink text-white font-bold text-xl px-3 py-1 rounded-lg">${hours.toString().padStart(2, '0')}</div>
+                <span class="font-bold text-xl">:</span>
+                <div class="bg-softPink text-white font-bold text-xl px-3 py-1 rounded-lg">${minutes.toString().padStart(2, '0')}</div>
+                <span class="font-bold text-xl">:</span>
+                <div class="bg-softPink text-white font-bold text-xl px-3 py-1 rounded-lg">${seconds.toString().padStart(2, '0')}</div>
+            `;
+        }, 1000);
+        
+        // Testimonials
+        const testimonials = [
+            {
+                name: "Vina",
+                city: "Jakarta",
+                text: "baru saja memesan Universal Stretch Stockings",
+                time: "Baru saja"
+            },
+            {
+                name: "Dina",
+                city: "Surabaya",
+                text: "baru saja memesan Universal Stretch Stockings",
+                time: "1 menit lalu"
+            },
+            {
+                name: "Kartika",
+                city: "Bandung",
+                text: "baru saja memesan Universal Stretch Stockings",
+                time: "2 menit lalu"
+            },
+            {
+                name: "Lestari",
+                city: "Medan",
+                text: "baru saja memesan Universal Stretch Stockings",
+                time: "3 menit lalu"
+            },
+            {
+                name: "Putri",
+                city: "Bekasi",
+                text: "baru saja memesan Universal Stretch Stockings",
+                time: "5 menit lalu"
+            },
+            {
+                name: "Maya Sari",
+                city: "Tangerang",
+                text: "baru saja memesan Universal Stretch Stockings",
+                time: "7 menit lalu"
+            },
+            {
+                name: "Rani",
+                city: "Depok",
+                text: "baru saja memesan Universal Stretch Stockings",
+                time: "8 menit lalu"
+            },
+            {
+                name: "Permata",
+                city: "Semarang",
+                text: "baru saja memesan Universal Stretch Stockings",
+                time: "10 menit lalu"
+            }
+        ];
+        
+        // Notification Popup
+        let notificationIndex = 0;
+        const notificationElement = document.getElementById('notification');
+        const notificationImg = document.getElementById('notificationImg');
+        const notificationText = document.getElementById('notificationText');
+        const notificationTime = document.getElementById('notificationTime');
+        
+        function showNotification() {
+            const testimonial = testimonials[notificationIndex];
+            notificationImg.src = `https://randomuser.me/api/portraits/women/${Math.floor(Math.random() * 90) + 10}.jpg`;
+            notificationText.textContent = `${testimonial.name} dari ${testimonial.city} ${testimonial.text}`;
+            notificationTime.textContent = testimonial.time;
+            
+            notificationElement.classList.remove('hidden');
+            
+            // Reset for next notification
+            notificationIndex = (notificationIndex + 1) % testimonials.length;
+            setTimeout(() => {
+                notificationElement.classList.add('hidden');
+            }, 5000);
+        }
+        
+        // Show first notification after 8 seconds, then every 8 seconds
+        setTimeout(() => {
+            showNotification();
+            setInterval(showNotification, 8000);
+        }, 8000);
+        
+        // Scroll animations
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
